@@ -51,11 +51,11 @@ class Parameters {
 
   Parameters(
       {this.dataset,
-        this.rows,
-        this.start,
-        this.facet,
-        this.format,
-        this.timezone});
+      this.rows,
+      this.start,
+      this.facet,
+      this.format,
+      this.timezone});
 
   Parameters.fromJson(Map<String, dynamic> json) {
     dataset = json['dataset'];
@@ -90,7 +90,7 @@ class Records {
     datasetid = json['datasetid'];
     recordid = json['recordid'];
     fields =
-    json['fields'] != null ? new Fields.fromJson(json['fields']) : null;
+        json['fields'] != null ? new Fields.fromJson(json['fields']) : null;
     geometry = json['geometry'] != null
         ? new Geometry.fromJson(json['geometry'])
         : null;
@@ -156,47 +156,47 @@ class Fields {
 
   Fields(
       {this.priseTypeEf,
-        this.priseTypeChademo,
-        this.contactOperateur,
-        this.idStationItinerance,
-        this.adresseStation,
-        this.nbrePdc,
-        this.priseType2,
-        this.restrictionGabarit,
-        this.statutPdc,
-        this.sirenAmenageur,
-        this.codeInseeCommune,
-        this.priseTypeComboCcs,
-        this.priseType3,
-        this.nomEnseigne,
-        this.arrondissement,
-        this.accessibilitePmr,
-        this.numPdl,
-        this.tarification,
-        this.horaires,
-        this.implantationStation,
-        this.nomStation,
-        this.reservation,
-        this.observations,
-        this.dateMaj,
-        this.dateMiseEnService,
-        this.idPdcLocal,
-        this.nomAmenageur,
-        this.nomOperateur,
-        this.gratuit,
-        this.telephoneOperateur,
-        this.idPdcItinerance,
-        this.puissanceNominale,
-        this.contactAmenageur,
-        this.paiementCb,
-        this.conditionAcces,
-        this.priseTypeAutre,
-        this.paiementActe,
-        this.stationDeuxRoues,
-        this.idStationLocal,
-        this.paiementAutre,
-        this.raccordement,
-        this.coordonneesxy});
+      this.priseTypeChademo,
+      this.contactOperateur,
+      this.idStationItinerance,
+      this.adresseStation,
+      this.nbrePdc,
+      this.priseType2,
+      this.restrictionGabarit,
+      this.statutPdc,
+      this.sirenAmenageur,
+      this.codeInseeCommune,
+      this.priseTypeComboCcs,
+      this.priseType3,
+      this.nomEnseigne,
+      this.arrondissement,
+      this.accessibilitePmr,
+      this.numPdl,
+      this.tarification,
+      this.horaires,
+      this.implantationStation,
+      this.nomStation,
+      this.reservation,
+      this.observations,
+      this.dateMaj,
+      this.dateMiseEnService,
+      this.idPdcLocal,
+      this.nomAmenageur,
+      this.nomOperateur,
+      this.gratuit,
+      this.telephoneOperateur,
+      this.idPdcItinerance,
+      this.puissanceNominale,
+      this.contactAmenageur,
+      this.paiementCb,
+      this.conditionAcces,
+      this.priseTypeAutre,
+      this.paiementActe,
+      this.stationDeuxRoues,
+      this.idStationLocal,
+      this.paiementAutre,
+      this.raccordement,
+      this.coordonneesxy});
 
   Fields.fromJson(Map<String, dynamic> json) {
     priseTypeEf = json['prise_type_ef'];
