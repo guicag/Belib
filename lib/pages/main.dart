@@ -9,6 +9,7 @@ import '../providers/location_provider.dart';
 import '../models/belib_model.dart';
 import 'infos_markers.dart';
 import 'details_markers.dart';
+import 'add_comments.dart';
 import 'package:belib/database/commentBox.dart';
 
 void main() async{
@@ -254,26 +255,19 @@ class _MyAppState extends State<MyApp> {
                                                     icon: Icon(Icons.feed_outlined),
                                                     label: Text("View details"),
                                                     onPressed: () => {
-                                                      // TODO
                                                       Navigator.push(
                                                         context,
                                                         MaterialPageRoute(builder: (context) => DetailsMarker(snapshot.data!.records![i].fields!)),
                                                       )
-                                                      /*Fluttertoast.showToast(
-                                                        msg: "View details",
-                                                        toastLength: Toast.LENGTH_SHORT,
-                                                        gravity: ToastGravity.BOTTOM,
-                                                      )*/
                                                     }
                                                 ),
                                                 TextButton.icon(
                                                     icon: Icon(Icons.add),
                                                     label: Text("Add comment"),
                                                     onPressed: () => {
-                                                      Fluttertoast.showToast(
-                                                        msg: "Add details",
-                                                        toastLength: Toast.LENGTH_SHORT,
-                                                        gravity: ToastGravity.BOTTOM,
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(builder: (context) => AddComment(snapshot.data!.records![i].recordid!)),
                                                       )
                                                     }
                                                 ),
