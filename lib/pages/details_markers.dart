@@ -13,11 +13,58 @@ class DetailsMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Details')),
-      body: Container(
-        child: Image.asset(
-          'assets/images/electric_car.png'
-        )
-      ),
+      body: Column(
+        children :  <Widget>[
+          Image.asset(
+              'assets/images/electric_car.png'
+          ),
+          Center(
+              child :Text(
+                  "Adresse"
+              )
+          ),
+          Center(
+              child :Text(
+                  "Infos"
+              )
+          ),
+          Table(
+            //border: TableBorder.all(),
+            columnWidths: const <int, TableColumnWidth>{
+              0: FlexColumnWidth(),
+              1: FlexColumnWidth(),
+            },
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            children: <TableRow>[
+              TableRow(
+                children: <Widget>[
+                  TableCell(
+                    verticalAlignment: TableCellVerticalAlignment.top,
+                    child: Center(
+                      child :Text(
+                          "Data"
+                      )
+                    ),
+                  ),
+                  TableCell(
+                    verticalAlignment: TableCellVerticalAlignment.top,
+                    child:Center(
+                        child :Text(
+                            "Value"
+                        )
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Center(
+              child :Text(
+                  "Comments"
+              )
+          ),
+        ]
+      )
     );
   }
 }
