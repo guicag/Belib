@@ -12,28 +12,34 @@ class DetailsMarker extends StatelessWidget {
   List<TableRow> rowInfos = [];
   List<TableRow> comments = [];
 
+  final box = CommentBox.box;
+
   void initComments(){
-    comments.add(TableRow(
-      children: <Widget>[
-        TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Center(
-              child :Text(
-                  "Test"
-              )
-          ),
-        ),
-        TableCell(
-            verticalAlignment: TableCellVerticalAlignment.top,
-            child:Center(
-                child : Text(
-                    "Commentaire sur la station Commentaire sur la station Commentaire sur la station Commentaire s ur la station Commentaire sur la station Commentaire sur la station Commentaire sur la station"
+    for (int i = 0; i < box.length; i++) {
+      if (details.idPdcLocal == box.getAt(i).id) {
+        comments.add(TableRow(
+          children: <Widget>[
+            TableCell(
+              verticalAlignment: TableCellVerticalAlignment.middle,
+              child: Center(
+                  child :Text(
+                      box.getAt(i).title
+                  )
+              ),
+            ),
+            TableCell(
+                verticalAlignment: TableCellVerticalAlignment.top,
+                child:Center(
+                    child : Text(
+                        box.getAt(i).message
+                    )
                 )
-            )
+            ),
+          ],
         ),
-      ],
-    ),
-    );
+        );
+      }
+    }
   }
 
   void initRowInfos() {
@@ -410,13 +416,73 @@ class DetailsMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Details')),
-      body: Container(
-        child: Image.asset(
-          'assets/images/electric_car.png'
+    if(rowInfos.isEmpty){
+      initRowInfos();
+    }
+    if(comments.isEmpty){
+      initComments();
+    }
+    return Scaffold (
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(title: Text('Details')),
+        body: SingleChildScrollView(
+            child: Column(
+                children :  <Widget>[
+                  Image.asset(
+                      'assets/images/electric_car.png'
+                  ),
+                  Center(
+                      child :Text(
+                        this.details.nomStation.toString(),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold
+                        ),
+                      )
+                  ),
+                  SizedBox(height: 20),
+                  Center(
+                      child :Text(
+                        "Information",
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        ),
+                      )
+                  ),
+                  SizedBox(height: 10),
+                  Table(
+                    //border: TableBorder.all(),
+                      columnWidths: const <int, TableColumnWidth>{
+                        0: FlexColumnWidth(),
+                        1: FlexColumnWidth(),
+                      },
+                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      children: rowInfos
+                  ),
+                  SizedBox(height: 20),
+                  Center(
+                      child :Text(
+                        "Comments",
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        ),
+                      )
+                  ),
+                  SizedBox(height: 10),
+                  Table(
+                    //border: TableBorder.all(),
+                      columnWidths: const <int, TableColumnWidth>{
+                        0: FlexColumnWidth(3),
+                        1: FlexColumnWidth(7),
+                      },
+                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      children: comments
+                  ),
+                ]
+            )
         )
-      ),
     );
   }
 }

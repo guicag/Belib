@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:developer' as developer;
 
 import '../providers/belib_api_provider.dart';
@@ -9,43 +10,12 @@ import 'package:belib/database/commentBox.dart';
 
 class AddComment extends StatelessWidget {
   final String idStation;
-  String? _title;
-  String? _text;
+  String title = '';
+  String text = '';
   final box = CommentBox.box;
-  //final _formKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   AddComment(@required this.idStation);
-
-  Widget _buildTitle() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Title'),
-      /*validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },*/
-      onSaved: (String? value) {
-        this._title = value;
-      },
-    );
-  }
-
-  Widget _buildText() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Text'),
-      maxLines : 8,
-      /*validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },*/
-      onSaved: (String? value) {
-        this._text = value;
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +26,37 @@ class AddComment extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.all(24),
             child: Form(
-              //key: _formKey,
+              key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildTitle(),
-                  _buildText(),
+                  TextFormField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      onSaved: (String ?value) {
+                        this.title = value!;
+                      }
+                  ),
+                  TextFormField(
+                      maxLines: 8,
+                      textInputAction: TextInputAction.done,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(labelText: 'Text'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      onSaved: (String ?value) {
+                        this.text = value!;
+                      }
+                  ),
                   SizedBox(height: 100),
                   ElevatedButton(
                     child: Text(
@@ -69,13 +64,17 @@ class AddComment extends StatelessWidget {
                       style: TextStyle(color: Color(0xFFA1B24E), fontSize: 16),
                     ),
                     onPressed: () {
-                      /*if (_formKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        print('valid');
-                        box.add(Comments(id: this.idStation, title: this._title.toString(), message: this._text.toString()));
-                      }*/
-                      box.add(Comments(id: this.idStation, title: "test", message: "test"));
-                      return;
+                        box.add(Comments(id: this.idStation, title: this.title, message: this.text));
+                        Fluttertoast.showToast(
+                          msg: "Comment added: " + title,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                        );
+                        Navigator.pop(context);
+                      }
+                      //box.add(Comments(id: this.idStation, title: "test", message: "test"));
                     },
                   )
                 ],
