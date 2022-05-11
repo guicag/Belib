@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
-import '../models/comment_model.dart';
 import '../providers/belib_api_provider.dart';
 import '../providers/location_provider.dart';
 import '../models/belib_model.dart';
