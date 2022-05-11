@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
-import '../models/comment_model.dart';
 import '../providers/belib_api_provider.dart';
 import '../providers/location_provider.dart';
 import '../models/belib_model.dart';
@@ -31,7 +30,6 @@ class _MyAppState extends State<MyApp> {
   late Future<Belib> futureBelib;
   late Future<Position> futureLocation;
   List<Marker> allMakersBelib = [];
-
 
   @override
   void initState() {
@@ -109,11 +107,10 @@ class _MyAppState extends State<MyApp> {
                   icon: const Icon(Icons.sync),
                   tooltip: 'Update data',
                   onPressed: () {
-                    Fluttertoast.showToast(
-                      msg: "Data update",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                    );
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => super.widget));
                   }
               ),
               IconButton(
