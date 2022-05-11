@@ -267,7 +267,7 @@ class _MyAppState extends State<MyApp> {
                                                     onPressed: () => {
                                                       Navigator.push(
                                                         context,
-                                                        MaterialPageRoute(builder: (context) => AddComment(snapshot.data!.records![i].recordid!)),
+                                                        MaterialPageRoute(builder: (context) => AddComment(snapshot.data!.records![i].fields!.idPdcLocal.toString())),
                                                       )
                                                     }
                                                 ),
