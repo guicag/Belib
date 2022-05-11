@@ -38,8 +38,52 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     futureBelib = fetchBelib();
     futureLocation = determinePosition();
-    //CommentBox.box.add(Comments(id:"test", title: "titre", message: "message"));
-    //print(CommentBox.box.getAt(0).id);
+  }
+
+  Color calculateRateMarker(Fields charger) {
+    double mark;
+    int nbrPoints = 0;
+    if (charger.statutPdc == "En service") {
+      nbrPoints++;
+    }
+    if (charger.paiementCb == "true") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeEf == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseType2 == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseType3 == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeComboCcs == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeChademo == "True") {
+      nbrPoints++;
+    }
+    if (charger.reservation == "true") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeAutre == "True") {
+      nbrPoints++;
+    }
+    if (charger.paiementActe == "true") {
+      nbrPoints++;
+    }
+    if (charger.stationDeuxRoues == "true") {
+      nbrPoints++;
+    }
+    mark = (nbrPoints / 11) * 10;
+    if (mark <= 3.0) {
+      return Colors.red;
+    } else if (mark <= 5.0) {
+      return Colors.orange;
+    } else {
+      return Colors.green;
+    }
   }
 
   @override
@@ -116,7 +160,7 @@ class _MyAppState extends State<MyApp> {
                   builder: (ctx) => new Container(
                     child: IconButton(
                         icon: Icon(Icons.location_on),
-                        color: Colors.red,
+                        color: calculateRateMarker(snapshot.data!.records![i].fields!),
                         iconSize: 20,
                         onPressed: () {
                           showModalBottomSheet(
