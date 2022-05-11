@@ -10,7 +10,6 @@ import 'infos_markers.dart';
 import 'details_markers.dart';
 import 'add_comments.dart';
 import 'package:belib/database/commentBox.dart';
-import 'package:belib/database/commentBox.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
