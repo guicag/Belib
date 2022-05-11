@@ -15,7 +15,7 @@ Future<void> showInfosDialog(BuildContext context) async {
               SizedBox(height: 25),
               Row(
                 children: [
-                  Icon(Icons.location_history, color: Colors.green, size: 35),
+                  Icon(Icons.location_on, color: Colors.green, size: 35),
                   Flexible(
                     child: Text('These are the highest rated electric charging stations in Paris.', style: TextStyle(fontSize: 15))
                   )
@@ -24,7 +24,7 @@ Future<void> showInfosDialog(BuildContext context) async {
               SizedBox(height: 10),
               Row(
                 children: [
-                  Icon(Icons.location_history, color: Colors.purple, size: 35),
+                  Icon(Icons.location_on, color: Colors.orange, size: 35),
                   Flexible(
                       child: Text('These are the electric charging that have an middle average in Paris.', style: TextStyle(fontSize: 15))
                   )
@@ -33,7 +33,7 @@ Future<void> showInfosDialog(BuildContext context) async {
               SizedBox(height: 10),
               Row(
                 children: [
-                  Icon(Icons.location_history, color: Colors.red, size: 35),
+                  Icon(Icons.location_on, color: Colors.red, size: 35),
                   Flexible(
                       child: Text('These are the lowest rated electric charging stations in Paris.', style: TextStyle(fontSize: 15))
                   )

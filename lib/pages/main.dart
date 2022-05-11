@@ -34,6 +34,52 @@ class _MyAppState extends State<MyApp> {
     futureLocation = determinePosition();
   }
 
+  Color calculateRateMarker(Fields charger) {
+    double mark;
+    int nbrPoints = 0;
+    if (charger.statutPdc == "En service") {
+      nbrPoints++;
+    }
+    if (charger.paiementCb == "true") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeEf == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseType2 == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseType3 == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeComboCcs == "True") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeChademo == "True") {
+      nbrPoints++;
+    }
+    if (charger.reservation == "true") {
+      nbrPoints++;
+    }
+    if (charger.priseTypeAutre == "True") {
+      nbrPoints++;
+    }
+    if (charger.paiementActe == "true") {
+      nbrPoints++;
+    }
+    if (charger.stationDeuxRoues == "true") {
+      nbrPoints++;
+    }
+    mark = (nbrPoints / 11) * 10;
+    if (mark <= 3.0) {
+      return Colors.red;
+    } else if (mark <= 5.0) {
+      return Colors.orange;
+    } else {
+      return Colors.green;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -108,7 +154,7 @@ class _MyAppState extends State<MyApp> {
                   builder: (ctx) => new Container(
                     child: IconButton(
                         icon: Icon(Icons.location_on),
-                        color: Colors.red,
+                        color: calculateRateMarker(snapshot.data!.records![i].fields!),
                         iconSize: 20,
                         onPressed: () {
                           showModalBottomSheet(
