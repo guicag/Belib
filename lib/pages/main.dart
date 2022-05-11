@@ -8,6 +8,7 @@ import '../providers/belib_api_provider.dart';
 import '../providers/location_provider.dart';
 import '../models/belib_model.dart';
 import 'infos_markers.dart';
+import 'package:belib/database/commentBox.dart';
 import 'details_markers.dart';
 import 'package:belib/database/commentBox.dart';
 import 'add_comments.dart';
