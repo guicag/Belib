@@ -38,6 +38,8 @@ class _MyAppState extends State<MyApp> {
     futureLocation = determinePosition();
     //CommentBox.box.add(Comments(id:"test", title: "titre", message: "message"));
     //print(CommentBox.box.getAt(0).id);
+    //CommentBox.box.add(Comments(id:"test", title: "titre", message: "message"));
+    //print(CommentBox.box.getAt(0).id);
   }
 
   Color calculateRateMarker(Fields charger) {
