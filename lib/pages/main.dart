@@ -3,12 +3,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
+import '../models/comment_model.dart';
 import '../providers/belib_api_provider.dart';
 import '../providers/location_provider.dart';
 import '../models/belib_model.dart';
 import 'infos_markers.dart';
+import 'package:belib/database/commentBox.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await CommentBox.init();
   runApp(MaterialApp(
       home: MyApp()
   ));
@@ -32,6 +36,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     futureBelib = fetchBelib();
     futureLocation = determinePosition();
+    //CommentBox.box.add(Comments(id:"test", title: "titre", message: "message"));
+    //print(CommentBox.box.getAt(0).id);
   }
 
   Color calculateRateMarker(Fields charger) {
